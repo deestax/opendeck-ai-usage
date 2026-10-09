@@ -1,0 +1,10 @@
+/target/
+/dist/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.log
+auth.json
+.credentials.json
+last-backup.txt

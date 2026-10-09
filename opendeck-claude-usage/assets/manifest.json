@@ -1,0 +1,35 @@
+{
+  "Name": "Claude Usage",
+  "Author": "Local",
+  "Version": "0.4.0",
+  "Category": "Claude",
+  "Icon": "icon",
+  "OS": [{"Platform": "linux"}],
+  "CodePathLin": "opendeck-claude-usage-linux",
+  "Actions": [
+    {
+      "UUID": "local.superdao.claudeusage.summary",
+      "Name": "Usage and resets",
+      "Icon": "icon",
+      "Tooltip": "Claude five-hour and weekly quota USED with relative reset countdowns. Tap to refresh.",
+      "Controllers": ["Keypad"],
+      "States": [{"Title": "Claude", "ShowTitle": false}]
+    },
+    {
+      "UUID": "local.superdao.claudeusage.limits",
+      "Name": "Subscription limits",
+      "Icon": "icon",
+      "Tooltip": "Claude five-hour and weekly quota used. Tap to refresh (30-second minimum).",
+      "Controllers": ["Keypad"],
+      "States": [{"Title": "Claude used", "ShowTitle": false}]
+    },
+    {
+      "UUID": "local.superdao.claudeusage.allowance",
+      "Name": "Monthly extra allowance",
+      "Icon": "icon",
+      "Tooltip": "Monthly extra-usage spending cap minus spending; NOT prepaid wallet balance. Tap to refresh.",
+      "Controllers": ["Keypad"],
+      "States": [{"Title": "Claude extra", "ShowTitle": false}]
+    }
+  ]
+}

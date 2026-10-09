@@ -1,0 +1,17 @@
+{
+  "Name": "Codex Usage",
+  "Author": "Local",
+  "Version": "0.2.0",
+  "Category": "Codex",
+  "Icon": "icon",
+  "OS": [{"Platform": "linux"}],
+  "CodePathLin": "opendeck-codex-usage-linux",
+  "Actions": [{
+    "UUID": "local.superdao.codexusage.usage",
+    "Name": "Usage",
+    "Icon": "icon",
+    "Tooltip": "Codex subscription quota used with relative reset countdowns",
+    "Controllers": ["Keypad"],
+    "States": [{"Title": "Codex", "ShowTitle": false}]
+  }]
+}
