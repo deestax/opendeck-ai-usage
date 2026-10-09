@@ -1,0 +1,22 @@
+{
+  "plugins": [
+    {
+      "name": "Ajazz AKP05 / Mirabox N4",
+      "folder": "com.github.ambiso.opendeck-akp05.sdPlugin",
+      "version": "0.11.0",
+      "url": "https://github.com/ambiso/opendeck-akp05/releases/download/v0.11.0/opendeck-akp05.plugin.zip",
+      "sha256": "8ade37d286c003da6b911db3f2e206adddee983219439d0426a737bbcb7a983a"
+    },
+    {
+      "name": "OpenRouter Credits",
+      "folder": "com.imdevinc.openroutercredits.sdPlugin",
+      "version": "0.0.1",
+      "url": "https://github.com/ImDevinC/opendeck-openrouter-usage/releases/download/v0.0.1/com.imdevinc.openroutercredits.zip",
+      "sha256": "370982efeb6defa7df3c9faf61e77baf051a9abcf14bfe2456a4edb177041b18"
+    }
+  ],
+  "udev": {
+    "url": "https://raw.githubusercontent.com/ambiso/opendeck-akp05/8f7742b7ba3125ca2a9df106b18fbf227e37a0d5/40-opendeck-akp05.rules",
+    "sha256": "9c61ff503db934f91685677e83d15647eed4c270d6fd864b102505b6c96949bb"
+  }
+}

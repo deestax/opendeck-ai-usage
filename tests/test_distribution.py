@@ -102,6 +102,10 @@ class DistributionTests(unittest.TestCase):
         process = subprocess.Popen([str(folder / 'ai-usage-style.sh'), '-port', '1'])
         self.assertEqual(process.wait(timeout=5), 0)
         self.assertNotIn(str(Path.home()), (folder / 'ai-usage-style.sh').read_text())
+        self.main('--replace', '--style')
+        self.assertEqual(json.loads((folder / 'ai-usage-style.json').read_text()), {'original': 'upstream-binary'})
+        self.assertEqual((folder / 'upstream-binary').read_bytes(), original)
+        (folder / 'ai-usage-style.json').unlink()
         with self.assertRaises(SystemExit):
             self.main('--replace', '--style')
 

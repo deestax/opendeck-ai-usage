@@ -30,7 +30,15 @@ def style_plan(plugins, arch):
         manifest = json.loads(path.read_text())
         original = manifest.get('CodePaths', {}).get(arch) or manifest.get('CodePathLin')
         if original == 'ai-usage-style.sh':
-            raise ValueError(f'{name} is already styled. Restore its manifest before reapplying --style.')
+            record_path = folder / 'ai-usage-style.json'
+            if not record_path.is_file():
+                raise ValueError(f'{name} has a legacy wrapper without provenance; restore its manifest before --style.')
+            record = json.loads(record_path.read_text())
+            original = record.get('original')
+        if not isinstance(original, str) or Path(original).is_absolute() or '..' in Path(original).parts:
+            raise ValueError(f'Invalid upstream executable path for {name}.')
+        if original in ('ai-usage-style', 'ai-usage-style.sh'):
+            raise ValueError(f'Recursive wrapper for {name}.')
         if not original or not (folder / original).is_file():
             raise ValueError(f'Missing upstream executable for {name} ({arch}).')
         if not os.access(folder / original, os.X_OK):
@@ -106,6 +114,7 @@ def main(argv=None):
         launcher.write_text('#!/bin/sh\nset -eu\ncd -- "$(dirname -- "$0")"\n'
                             'exec ./ai-usage-style "$PWD"/' + shlex.quote(original) + ' "$@"\n')
         launcher.chmod(0o755)
+        (folder / 'ai-usage-style.json').write_text(json.dumps({'original': original}) + '\n')
         manifest['CodePathLin'] = launcher.name
         manifest.setdefault('CodePaths', {})[arch] = launcher.name
         (folder / 'manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
